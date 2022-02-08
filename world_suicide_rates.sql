@@ -1,14 +1,18 @@
 
+----------------------------This little project is to explore and understand the world's suicide rates for the past 20 years.
+----------------------------We hope to gain some insights and raise awareness for mental health, especially during this pandemic.
+----------------------------The data set is obtained from https://www.kaggle.com/ankanhore545/world-suicide-rates-20002019
+
+
 
 -----------------------------Take an overview of our data set
-
 
 SELECT *
 FROM World_suicide_rates.dbo.WSR
 
 
----------------------------- See how many main regions in our data
 
+---------------------------- See how many main regions in our data
 
 select Distinct(region)
 from World_suicide_rates.dbo.WSR
@@ -19,7 +23,6 @@ FROM World_suicide_rates.DBO.WSR
 
 
 ------------------------------Clean data and choose relevant columns, import them in the new table
-
 
 DROP TABLE IF EXISTS World_suicide_rates.dbo.WSR_cleaned
 SELECT 
@@ -40,7 +43,6 @@ FROM World_suicide_rates.dbo.WSR
 
 ---------------------------List Max/Min/Ave Rate of each Area in 20 years
 
-
 SELECT 
 	region, 
 	region_code, 
@@ -59,8 +61,7 @@ ORDER BY Region
 
 ----------------------List Countries in each region that have 2019 suicide rate higher than their region 20 years average
 
-
-WITH Region_Average AS----------set up a CTE listing the 20 year average for each region
+WITH Region_Average AS
 (
 	SELECT 
 		region, 
@@ -93,7 +94,6 @@ ORDER BY region_code
 
 
 ----------------------------Count how many countries that have 2019 suicide rate higher than its region 20 year average
-
 
 WITH Region_Average AS
 (
@@ -133,7 +133,6 @@ GROUP BY
 
 ----------------------------------Identify country with Highest Suicide rate and year
 
-
 SELECT 
 	country, 
 	rate, 
@@ -153,7 +152,6 @@ WHERE
 
 
 ------------------------------------How fast has suicide rate rised/fell for the past 20 years in all 6 regions
-
 
 WITH base_rate_2000 AS 
 (
